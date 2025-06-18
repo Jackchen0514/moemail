@@ -25,7 +25,7 @@ export async function POST(request: Request) {
         html: "<p>This is a <strong>test</strong> email.</p>",
         receivedAt: "2023-03-01T12:00:00Z",
         toAddress: "recipient@example.com",
-	chat_id: 5424544015,
+	chat_id: '5424544015',
 	text: "719471798"
       } as EmailMessage
     })
