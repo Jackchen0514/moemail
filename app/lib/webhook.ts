@@ -20,8 +20,6 @@ export interface WebhookPayload {
 
 export async function callWebhook(url: string, payload: WebhookPayload) {
   let lastError: Error | null = null
-  payload.data.chat_id = 5424544015
-  payload.data.text = payload.data.content
   for (let i = 0; i < WEBHOOK_CONFIG.MAX_RETRIES; i++) {
     try {
       const controller = new AbortController()
