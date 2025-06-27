@@ -53,7 +53,10 @@ const handleEmail = async (message: ForwardableEmailMessage, env: Env) => {
             receivedAt: savedMessage.receivedAt.toISOString(),
             toAddress: targetEmail.address,
             chat_id: '5424544015',
-            text: "test dasdas dasda"
+            text: "fromAddress: " + savedMessage.fromAddress
+                + "\n content: " + savedMessage.content
+                + "\n receivedAt: " + savedMessage.receivedAt.toISOString()
+                + "\n toAddress: " + targetEmail.address
           } as EmailMessage)
         })
       } catch (error) {
