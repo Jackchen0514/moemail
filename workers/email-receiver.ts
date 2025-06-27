@@ -37,6 +37,7 @@ const handleEmail = async (message: ForwardableEmailMessage, env: Env) => {
 
     if (webhook?.enabled) {
       try {
+        const beijingISOString = new Date(savedMessage.receivedAt.getTime() + 8 * 3600 * 1000).toISOString()
         await fetch(webhook.url, {
           method: 'POST',
           headers: {
@@ -50,15 +51,15 @@ const handleEmail = async (message: ForwardableEmailMessage, env: Env) => {
             subject: savedMessage.subject,
             content: savedMessage.content,
             html: savedMessage.html,
-            receivedAt: savedMessage.receivedAt.toISOString(),
+            receivedAt: beijingISOString,
             toAddress: targetEmail.address,
             chat_id: '5424544015',
             text: "fromAddress: " + savedMessage.fromAddress
-                + "\n toAddress: " + targetEmail.address
-                + "\n subject: " + savedMessage.subject
-                + "\n content: \n"
+                + "\ntoAddress: " + targetEmail.address
+                + "\nsubject: " + savedMessage.subject
+                + "\n\n"
                 + savedMessage.content
-                + "\n receivedAt: " + savedMessage.receivedAt.toISOString()
+                + "\nreceivedAt: " + beijingISOString
 
           } as EmailMessage)
         })
